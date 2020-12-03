@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="JwtService\IJwtService.cs" />
+    <Compile Remove="JwtService\JwtService.cs" />
+    <Compile Remove="UserService\IUserService.cs" />
+    <Compile Remove="UserService\UserService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.8.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="JwtService\" />
+    <Folder Include="UserService\" />
+  </ItemGroup>
+
+</Project>

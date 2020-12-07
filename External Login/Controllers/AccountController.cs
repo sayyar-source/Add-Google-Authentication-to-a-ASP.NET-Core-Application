@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace External_Login.Controllers
 {
-    [AllowAnonymous,Route("account")]
+    [Route("account")]
+    [Authorize]
     public class AccountController : Controller
     {
   
@@ -23,6 +24,7 @@ namespace External_Login.Controllers
   
 
         [Route("google-login")]
+        [AllowAnonymous]
         public IActionResult GoogleLogin(string returnUrl = null)
         {
             var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
@@ -30,6 +32,7 @@ namespace External_Login.Controllers
            
         }
         [Route("google-response")]
+        [AllowAnonymous]
         public async Task<IActionResult> GoogleResponse()
         {
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -46,8 +49,8 @@ namespace External_Login.Controllers
         return Json(claim);
         }
      
-  
-        [Authorize,Route("logout")]
+         [Route("logout")]
+         [Authorize]
         public async Task<IActionResult> Logout()
         
         
